@@ -1,0 +1,77 @@
+random seed 42
+---
+m1: use miner: type_of_triplets=all
+[dataset:cifar][bits:32][best-epoch:94][best-mAP:0.825]
+[dataset:nuswide][bits:32][best-epoch:4][best-mAP:0.839]
+[dataset:flickr][bits:32][best-epoch:4][best-mAP:0.826]
+[dataset:coco][bits:32][best-epoch:54][best-mAP:0.690]
+
+m2: no miner
+[dataset:cifar][bits:32][best-epoch:34][best-mAP:0.832]
+[dataset:nuswide][bits:32][best-epoch:19][best-mAP:0.839]
+[dataset:flickr][bits:32][best-epoch:4][best-mAP:0.826]
+[dataset:coco][bits:32][best-epoch:49][best-mAP:0.685]
+
+m3: no miner + rmsprop
+[dataset:cifar][bits:32][best-epoch:39][best-mAP:0.813]
+[dataset:nuswide][bits:32][best-epoch:4][best-mAP:0.839]
+
+m4: no miner + AdamW
+[dataset:cifar][bits:32][best-epoch:79][best-mAP:0.856]
+[dataset:nuswide][bits:32][best-epoch:19][best-mAP:0.845]
+[dataset:flickr][bits:32][best-epoch:14][best-mAP:0.825]
+[dataset:coco][bits:32][best-epoch:69][best-mAP:0.699]
+
+m5: use miner + AdamW
+[dataset:cifar][bits:32][best-epoch:79][best-mAP:0.831]
+[dataset:nuswide][bits:32][best-epoch:14][best-mAP:0.842]
+[dataset:flickr][bits:32][best-epoch:4][best-mAP:0.824]
+[dataset:coco][bits:32][best-epoch:64][best-mAP:0.692]
+
+m6(*): use miner + AdamW + lr: 1e-4 -> 5e-5
+[dataset:cifar][bits:32][best-epoch:49][best-mAP:0.865]
+[dataset:nuswide][bits:32][best-epoch:14][best-mAP:0.850]
+[dataset:flickr][bits:32][best-epoch:4][best-mAP:0.824]
+[dataset:coco][bits:32][best-epoch:74][best-mAP:0.697]
+
+m7: use miner + AdamW + lr: 5e-5 -> 1e-5
+[dataset:cifar][bits:32][best-epoch:69][best-mAP:0.869]
+[dataset:nuswide][bits:32][best-epoch:9][best-mAP:0.846]
+[dataset:flickr][bits:32][best-epoch:14][best-mAP:0.822]
+[dataset:coco][bits:32][best-epoch:99][best-mAP:0.686]
+
+m8: m6 + weight_decay: 1e-4 -> 5e-4
+[dataset:cifar][bits:32][best-epoch:49][best-mAP:0.865]
+[dataset:nuswide][bits:32][best-epoch:14][best-mAP:0.850]
+[dataset:flickr][bits:32][best-epoch:4][best-mAP:0.824]
+[dataset:coco][bits:32][best-epoch:74][best-mAP:0.697]
+
+m9: m6 + weight_decay: 1e-4 -> 1e-3
+[dataset:cifar][bits:32][best-epoch:94][best-mAP:0.864]
+[dataset:nuswide][bits:32][best-epoch:9][best-mAP:0.849]
+[dataset:flickr][bits:32][best-epoch:14][best-mAP:0.822]
+[dataset:coco][bits:32][best-epoch:49][best-mAP:0.697]
+
+m10: align to m6
+model+l2_normalization(like FaceNet)
+dist=squared L2 norm
+margin=0.5
+loss=loss/2
+[dataset:cifar][bits:32][best-epoch:89][best-mAP:0.868]
+[dataset:nuswide][bits:32][best-epoch:19][best-mAP:0.847]
+[dataset:flickr][bits:32][best-epoch:4][best-mAP:0.822]
+[dataset:coco][bits:32][best-epoch:54][best-mAP:0.695]
+
+m11: m10+margin=0.2
+
+
+so:
+1) AdamW is better than Adam (m5 vs. m1 & m4 vs. m2)
+2) Not using a miner works better (m4 vs. m5), mainly because there is an average value when calculating the gradient, and not using a miner has a larger denominator, which corresponds to a smaller lr. -> m6 smaller lr works!
+3) What is the best weight_decay for ResNet50? Default 1e-4 (m8m9 vs. m6)
+4) How to adaptive weight_decay? For overfitting in cifar is high. Need not.
+|-Improving Robustness with Adaptive Weight Decay
+|-Adaptive Weight Decay for Deep Neural Networks
+5) Will model+l2_normalization better? No.
+---
+6) Is model+l2_normalization compatible with quanti-loss?
