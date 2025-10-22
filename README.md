@@ -39,10 +39,13 @@ After the dataset has been prepared, we could run the follow command to train.
 
 ### Citation
   @ARTICLE{11208593,
+  
   author={Qin, Qibing and Wu, Lei and Zhang, Wenfeng and Zhang, Huihui and Huang, Lei and Nie, Jie},
+  
   journal={IEEE Transactions on Multimedia}, 
+  
   title={Deep Semantic Tuplet-based Hashing by Hypergraph Modeling for Cross-modal Retrieval}, 
+  
   year={2025},
-  volume={},
-  number={},
+
   pages={1-14}}
