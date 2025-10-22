@@ -1,4 +1,4 @@
-[Deep Semantic Tuplet-based Hashing by Hypergraph Modeling for Cross-modal Retrieval]()
+[Deep Semantic Tuplet-based Hashing by Hypergraph Modeling for Cross-modal Retrieval](https://ieeexplore.ieee.org/document/11208593)
 
 This paper is accepted for publication with TMM.
 
