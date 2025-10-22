@@ -38,10 +38,11 @@ After the dataset has been prepared, we could run the follow command to train.
 > python main.py --is-train --dataset coco --caption-file caption.mat --index-file index.mat --label-file label.mat --lr 0.001 --output-dim 64 --save-dir ./result/coco/64 --clip-path ./ViT-B-32.pt --batch-size 128
 
 ### Citation
-@ARTICLE{128830,  
-  author={Wu, Lei and Qin, Qibing and Hou, jinkui and Dai, jiangyan and Huang, Lei and Zhang, Wenfeng},  
-  journal={Neurocomputing},  
-  title={Deep multi-similarity hashing via label-guided network for cross-modal retrieval},  
-  year={2024},  
-  pages={5926-5939},  
-  doi={https://doi.org/10.1016/j.neucom.2024.128830}}
+  @ARTICLE{11208593,
+  author={Qin, Qibing and Wu, Lei and Zhang, Wenfeng and Zhang, Huihui and Huang, Lei and Nie, Jie},
+  journal={IEEE Transactions on Multimedia}, 
+  title={Deep Semantic Tuplet-based Hashing by Hypergraph Modeling for Cross-modal Retrieval}, 
+  year={2025},
+  volume={},
+  number={},
+  pages={1-14}}
